@@ -21,12 +21,6 @@ for iter = 1:NITET
     idx=find(-z2/mu>=0.5);
     y=zeros(num,1);
     y(idx)=1;
-%     if isempty(idx)
-%         [val,idx1]=sort(-z2,'descend');
-%         y(idx1(1:t))=1;
-%     else
-%         y(idx)=1;
-%     end
 
     % Update Lambda
     h = x-y;
@@ -35,7 +29,6 @@ for iter = 1:NITET
     % Update mu
     mu = rho*mu;
 
-    %     obj(iter) = norm(h,'fro');
     obj(iter) = x'*H*x+x'*f;
 
     if iter>=2 && abs((obj(iter)-obj(iter-1))/obj(iter))<10^(-5)  % mu = rho^iter*mu
@@ -45,18 +38,10 @@ for iter = 1:NITET
     else
         continue;
     end
-%     if  mu > 10
-%         break;
-%     else
-%         continue;
-%     end
 end
 
 learn_x=zeros(num,1);
 [val,idx1]=sort(x,'descend' );
 learn_x(idx1(1:t))=1;
-
-% figure(1)
-% plot(1:length(obj),obj);
 
 end

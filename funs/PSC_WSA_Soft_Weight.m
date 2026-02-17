@@ -20,7 +20,6 @@ for i = 1 :V
     G{i,1}=Z{i,1}*F;
 
     tempQ=sparse(num,m);
-    %     XXT{i}=X{i}'*X{i};
     X_i=X{i};
     temp_X_i=sparse(num,num);
     for j=1:m
@@ -91,7 +90,6 @@ for iter=1:30
         Dv=-2*(X{v}'*A{v}*Z{v}).*K;
 
         tempQ=sparse(num,m);
-        iniQ=Q{v};
         for i=1:m
             idx=find(M(:,i)==1);
             H=e(i)*Rv(idx,idx);

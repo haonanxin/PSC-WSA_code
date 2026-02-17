@@ -12,6 +12,7 @@ alpha=ones(V,1)./V;
 F=zeros(m,c);
 F(1:c,:) = eye(c);
 temp_K=sum(M,1);
+temp_K2=ceil(temp_K*t);
 K=1./ceil(temp_K*t);
 for i = 1 :V
     temp_Z=zeros(k,m); % m  * n
@@ -20,7 +21,6 @@ for i = 1 :V
     G{i,1}=Z{i,1}*F;
 
     tempQ=sparse(num,m);
-%     XXT{i}=X{i}'*X{i};
     X_i=X{i};
     temp_X_i=sparse(num,num);
     for j=1:m
@@ -88,7 +88,7 @@ for iter=1:30
     if t~=1
         for v=1:V
             Rv=XXT{v};
-            e=1./(temp_K.^2);
+            e=1./(temp_K2.^2);
             Dv=-2*(X{v}'*A{v}*Z{v}).*K;
 
             tempQ=sparse(num,m);
@@ -98,7 +98,6 @@ for iter=1:30
                 idx=find(M(:,i)==1);
                 H=e(i)*Rv(idx,idx);
                 f=Dv(idx,i);
-%                 tempQ(idx,i)=discrete_QP(H,f,iniQ(idx,i));
                 tempQ(idx,i) = DQP_ALM(H,f,iniQ(idx,i));
             end
             Q{v}=tempQ;
