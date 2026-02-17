@@ -2,7 +2,7 @@ clear;clc;close all;
 addpath('data')
 addpath('funs');
 
-dataset_name='Caltech101-7';
+dataset_name='Wiki_textimage';
 load([dataset_name,'.mat'])
 num=size(X{1},1);
 V=length(X);
@@ -18,19 +18,13 @@ end
 % mu=1000;	 beta=100;	 k=8;
 
 %% Parameter Setting of Caltech101-7 with normalization       ACC = 0.86
-mu=1;	 beta=1;	 k=21;
-
-%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization        ACC = 0.77
-% mu=1000;	 beta=0.01;	 k=134;
+% mu=1;	 beta=1;	 k=21;
 
 %% Parameter Setting of Wiki_textimage with normalization     ACC = 0.61
-% mu=0.01;	 beta=0.1;	 k=10;
+mu=0.01;	 beta=0.1;	 k=10;
 
 %% Parameter Setting of CiteSeer with normalization               ACC = 0.57
 % mu=100;	 beta=0.01;	 k=6;
-
-%% Parameter Setting of STL10 with normalization               ACC = 0.94
-% mu=10;	 beta=1;	 k=30;
 
 %% Optimization of PSC-WSA Hard Weight
 [M,idx] = PSIG(X);

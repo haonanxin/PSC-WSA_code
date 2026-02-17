@@ -20,17 +20,11 @@ mu=1;	 beta=10;	 k=12;
 %% Parameter Setting of Caltech101-7 with normalization       ACC = 0.82
 % mu=100;	 beta=100;	 k=7;
 
-%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization        ACC = 0.76
-% mu=100;	 beta=1;	 k=201;
-
 %% Parameter Setting of Wiki_textimage with normalization     ACC = 0.61
 % mu=0.01;	 beta=1;	 k=30;
 
 %% Parameter Setting of CiteSeer with normalization               ACC = 0.57
 % mu=100;	 beta=0.1;	 k=6;
-
-%% Parameter Setting of STL10 with normalization               ACC = 0.94
-% mu=10;	 beta=1;	 k=30;
 
 %% Optimization of PSC-WSA Soft Weight
 [M,idx] = PSIG(X);
