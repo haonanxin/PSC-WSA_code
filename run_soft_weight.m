@@ -20,7 +20,7 @@ mu=1;	 beta=10;	 k=12;
 %% Parameter Setting of Caltech101-7 with normalization       ACC = 0.82
 % mu=100;	 beta=100;	 k=7;
 
-%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization0        ACC = 0.76
+%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization        ACC = 0.76
 % mu=100;	 beta=1;	 k=201;
 
 %% Parameter Setting of Wiki_textimage with normalization     ACC = 0.61
@@ -39,6 +39,6 @@ Y_pre=kmeans(F(idx, :),c,'Replicates',100,'MaxIter',50);
 my_result = ClusteringMeasure_new(Y, Y_pre);
 
 disp(['********************************************']);
-disp(['Running PSC-WSA on ',dataset_name,' to obtain ACC: ', num2str(my_result.ACC)]);
+disp(['Running PSC-WSA Soft Weight on ',dataset_name,' to obtain ACC: ', num2str(my_result.ACC)]);
 disp(['********************************************']);
 

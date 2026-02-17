@@ -2,7 +2,7 @@ clear;clc;close all;
 addpath('data')
 addpath('funs');
 
-dataset_name='prokaryotic';
+dataset_name='Caltech101-7';
 load([dataset_name,'.mat'])
 num=size(X{1},1);
 V=length(X);
@@ -15,16 +15,16 @@ for i = 1 :length(X)
 end
 
 %% Parameter Setting of prokaryotic with normalization     ACC = 0.77
-mu=1000;	 beta=100;	 k=8;
+% mu=1000;	 beta=100;	 k=8;
 
 %% Parameter Setting of Caltech101-7 with normalization       ACC = 0.86
-% mu=1;	 beta=1;	 k=21;
+mu=1;	 beta=1;	 k=21;
 
-%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization0        ACC = 0.78
-% mu=1000;	 beta=0.1;	 k=67;
+%% Parameter Setting of NTU2012_mvcnn_gvcnn with normalization        ACC = 0.77
+% mu=1000;	 beta=0.01;	 k=134;
 
-%% Parameter Setting of Wiki_textimage with normalization     ACC = 0.60
-% mu=0.01;	 beta=1;	 k=30;
+%% Parameter Setting of Wiki_textimage with normalization     ACC = 0.61
+% mu=0.01;	 beta=0.1;	 k=10;
 
 %% Parameter Setting of CiteSeer with normalization               ACC = 0.57
 % mu=100;	 beta=0.01;	 k=6;
@@ -39,6 +39,6 @@ Y_pre=kmeans(F(idx, :),c,'Replicates',100,'MaxIter',50);
 my_result = ClusteringMeasure_new(Y, Y_pre);
 
 disp(['********************************************']);
-disp(['Running PSC-WSA on ',dataset_name,' to obtain ACC: ', num2str(my_result.ACC)]);
+disp(['Running PSC-WSA Hard Weight on ',dataset_name,' to obtain ACC: ', num2str(my_result.ACC)]);
 disp(['********************************************']);
 
